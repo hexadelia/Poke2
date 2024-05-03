@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.poke2.databinding.ActivityMainBinding;
-import com.example.poke2.fragments.ListPokemon;
+import com.example.poke2.fragments.ListPokemonFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getSupportFragmentManager().beginTransaction().replace(binding.containerView.getId(), ListPokemon.newInstance(PokemonRepo.getPokemonList())).commit();
+        getSupportFragmentManager().beginTransaction().replace(binding.containerView.getId(), ListPokemonFragment.newInstance(PokemonRepo.getPokemonList())).commit();
     }
 }

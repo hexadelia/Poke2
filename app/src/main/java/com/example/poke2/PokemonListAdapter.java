@@ -9,17 +9,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.poke2.databinding.PokemonListItemRowBinding;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class PokemonListAdapter extends RecyclerView.Adapter {
 
 
     private List<Pokemon> pokemonList;
     private final LayoutInflater inflator;
+    private final Consumer<Integer> onEditEvent;
 
-    public PokemonListAdapter(Context context, List<Pokemon> pokemonList) {
+    public PokemonListAdapter(Context context, List<Pokemon> pokemonList, Consumer<Integer> onEditEvent) {
         this.inflator = LayoutInflater.from(context);
         this.pokemonList = pokemonList;
+        this.onEditEvent = onEditEvent;
     }
 
     @NonNull
@@ -30,7 +34,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((PokemonViewHolder)holder).updateViewHolder(pokemonList.get(position));
+        ((PokemonViewHolder)holder).updateViewHolder(pokemonList.get(position), position, onEditEvent);
     }
 
     @Override
